@@ -1,12 +1,10 @@
 const express = require("express");
-const cors = require("cors");
+const path = require("path");
 const server = express();
-const port = 8000;
+const port = 3002;
 
-server.use(cors);
+server.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
 
-server.get("/", (req, res) => res.sendFile("index.html"));
-
-server.listen(port, "0.0.0.0", () => {
+server.listen(port, () => {
   console.log(`Web server started on port ${port}.`);
 });
